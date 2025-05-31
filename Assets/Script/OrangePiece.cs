@@ -63,11 +63,12 @@ public class OrangePiece : MonoBehaviour
     private bool isDragging = false;
     private MovementController movementController;
     private bool hasMoved = false;
-
+    private AudioSource audioSource;
     void Start()
     {
         mainCamera = Camera.main;
         movementController = FindObjectOfType<MovementController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnMouseDown()
@@ -75,6 +76,12 @@ public class OrangePiece : MonoBehaviour
         isDragging = true;
         hasMoved = false;
         offset = transform.position - mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+        // Phát âm thanh khi bắt đầu kéo
+        if (audioSource != null && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
     }
 
     void OnMouseDrag()

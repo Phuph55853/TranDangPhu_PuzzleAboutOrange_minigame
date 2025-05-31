@@ -148,6 +148,7 @@ public class MovementController : MonoBehaviour
 
         return pos.x >= minX && pos.x <= maxX && pos.y >= minY && pos.y <= maxY;
     }
+
 }
 
 
